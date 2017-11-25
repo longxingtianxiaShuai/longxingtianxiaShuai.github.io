@@ -69,6 +69,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git的简单使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/25/git的简单使用/" class="article-date">
+  <time datetime="2017-11-25T06:01:19.000Z" itemprop="datePublished">2017-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/25/git的简单使用/">git的简单使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>如果你想把代码保存到码云上,有没有合适的图形化界面管理工具,就要学一下git的命令行用法了。好了废话不多说 ，先说几个基本概念</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>1 本地文件被称为 工作区</li>
+<li>2 git add 是告诉Git 把哪些文件添加到暂存区（仓库）</li>
+<li>3 git commit 实际上就是把暂存区的所有内容提交到当前分支</li>
+<li>4 git push -u origin master 把文件提交到远程仓库</li>
+</ul>
+<h4 id="一些常用指令的使用场景"><a href="#一些常用指令的使用场景" class="headerlink" title="一些常用指令的使用场景"></a>一些常用指令的使用场景</h4><p>touch  readme.txt<br>git status 查看当前仓库的状态<br>git diff readme.text 查看修改了哪些内容</p>
+<h4 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h4><p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。</p>
+<p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
+<p>要重返未来（比如HEAD 现在指向100，要跳转到200），用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h5 id="提交修改的形式"><a href="#提交修改的形式" class="headerlink" title="提交修改的形式"></a>提交修改的形式</h5><ul>
+<li>1第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit</li>
+<li>2 第二次修改后执行一次-&gt; git add -&gt; git commit</li>
+</ul>
+<h4 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h4><p>分三种情况</p>
+<ul>
+<li>1  还没有执行 git add readme.txt   通过执行 git checkout – readme.txt 撤销修改</li>
+<li>2  执行了git add readme.txt 分两步</li>
+<li>1  执行 git reset HEAD readme.txt  到工作区</li>
+<li>2 执行git checkout – readme.txt 撤销修改</li>
+<li>3 执行了git commit “提交了readme.txt”</li>
+<li>1 git reset –hard HEAD^ 会退到上一个版本</li>
+<li>2 git reset –hard HEAD^^回退到上上个版本</li>
+<li>3 git reset –hard HEAD~100 向上回退100个版本</li>
+<li>4 git reset –hard 3628164 回退到指定版本 可以通过 git reflog 查看要回到哪个版本</li>
+</ul>
+<h4 id="文件删除"><a href="#文件删除" class="headerlink" title="文件删除"></a>文件删除</h4><ul>
+<li>1 执行 rm readme.txt 删除工作区的文件<br>此时有两种情况供你选择</li>
+<li>1 删错了  执行 git checkout readme.txt 从暂存区 恢复</li>
+<li>2 确定要删除  执行 git rm readme.txt 并且执行 git commit -m “提交修改”</li>
+<li>3 git rm 后执行git checkout readme.txt 就无效了 如果readme.txt 执行过commit 可以通过git reset –hard 3628164会到指定版本 之后执行 git push -u origin master 提交到远程仓库</li>
+<li>4 命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容</li>
+</ul>
+<h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><ul>
+<li>1 在本地创建文件夹 test    -&gt; cd test  -&gt; git init</li>
+<li>2 关联远程仓库 git remote add origin 仓库地址</li>
+<li>3 git pull origin master</li>
+<li>4 修改文件</li>
+<li>5 git push -u origin master<h6 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h6>第一次推送master分支是 加上 -u 参数,git不但会把本地的master分支和远程的master分支关联起来.在以后的推送或拉取的时候可以简化命令</li>
+</ul>
+<h4 id="创建和合并分支"><a href="#创建和合并分支" class="headerlink" title="创建和合并分支"></a>创建和合并分支</h4><ul>
+<li>查看分支 git branch</li>
+<li>切换分支 git checkout 分支名称</li>
+<li>创建分支 git branch dev</li>
+<li>创建+切换分支 git checkout -b 分支名称</li>
+<li>合并某分支(dev)到当前分支(master) {<br>git checkout master<br>git merge dev<br>}</li>
+</ul>
+<h2 id="—-以上是还没有添加到远程仓库的操作-—"><a href="#—-以上是还没有添加到远程仓库的操作-—" class="headerlink" title="—-      以上是还没有添加到远程仓库的操作     —"></a>—-      以上是还没有添加到远程仓库的操作     —</h2><p>‘’’<br>1.初始化一个代码仓库</p>
+<p>git init</p>
+<p>2.如果使用git必须给git配置一个用户名和邮箱</p>
+<p>给当前的git仓库配置一个用户名和邮箱</p>
+<p>git config user.name “why”</p>
+<p>git config user.email “why@163.com”</p>
+<p>配置一个全局的用户名和邮箱</p>
+<p>git config —-global user.name “why”</p>
+<p>git config —-global user.email “why@163.com”<br>‘’’<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000" target="_blank" rel="noopener">廖雪峰Git技术博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/git的简单使用/" data-id="cjaexidcc0005joj0ihf5okwk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-UITableView套UITableView数据刷新" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/25/UITableView套UITableView数据刷新/" class="article-date">
@@ -119,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/UITableView套UITableView数据刷新/" data-id="cjaex8nnj0001hpj06r4l8a5a" class="article-share-link">Share</a>
+      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/UITableView套UITableView数据刷新/" data-id="cjaexidc50001joj0ysq9qibq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UITableView/">UITableView</a></li></ul>
@@ -165,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/Masonry布局/" data-id="cjaex8nnf0000hpj0u18tanjj" class="article-share-link">Share</a>
+      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/Masonry布局/" data-id="cjaexidc10000joj0dj0mhqae" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UITableView/">UITableView</a></li></ul>
@@ -218,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/24/算法入门视频/" data-id="cjaex8nno0004hpj0duk7mlrf" class="article-share-link">Share</a>
+      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/24/算法入门视频/" data-id="cjaexidcb0004joj0capu0iqh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法学习/">算法学习</a></li></ul>
@@ -265,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/24/hello-world/" data-id="cjaex8nnn0003hpj0f6lhxe1z" class="article-share-link">Share</a>
+      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/24/hello-world/" data-id="cjaexidc90003joj0d0ps5t6i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HEXO自带引导/">HEXO自带引导</a></li></ul>
@@ -289,7 +384,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO自带引导/">HEXO自带引导</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法学习/">算法学习</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO自带引导/">HEXO自带引导</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法学习/">算法学习</a></li></ul>
     </div>
   </div>
 
@@ -299,7 +394,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/HEXO自带引导/" style="font-size: 10px;">HEXO自带引导</a> <a href="/tags/UITableView/" style="font-size: 20px;">UITableView</a> <a href="/tags/算法学习/" style="font-size: 10px;">算法学习</a>
+      <a href="/tags/HEXO自带引导/" style="font-size: 10px;">HEXO自带引导</a> <a href="/tags/UITableView/" style="font-size: 20px;">UITableView</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/算法学习/" style="font-size: 10px;">算法学习</a>
     </div>
   </div>
 
@@ -319,6 +414,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/11/25/git的简单使用/">git的简单使用</a>
+          </li>
         
           <li>
             <a href="/2017/11/25/UITableView套UITableView数据刷新/">UITableView套UITableView数据刷新</a>
