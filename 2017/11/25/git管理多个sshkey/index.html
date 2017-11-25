@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用git遇到的问题 | 高帅的技术博客</title>
+  <title>git管理多个sshkey | 高帅的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1 Pixhawk—fatal: Not a git repository (or any of the parent directories) 1 执行git remote add origin (代码仓库地址)git@git.oschina.net:GShuai/sswuf.git 先要cd 本地文件夹    但是">
+  <meta name="description" content="#如果你有一个自己的git账号 又有一个公司的git账号 你可能会用的这一点 我们可以在~/.ssh目录下新建一个config文件配置一下，就可以解决问题. 下面用的xunwei 你可以替换为任何字符   cd  ~/.ssh    ssh-keygen -t rsa -C “github邮箱”    不要一路回车 第">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用git遇到的问题">
-<meta property="og:url" content="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/使用git遇到的问题/index.html">
+<meta property="og:title" content="git管理多个sshkey">
+<meta property="og:url" content="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/git管理多个sshkey/index.html">
 <meta property="og:site_name" content="高帅的技术博客">
-<meta property="og:description" content="1 Pixhawk—fatal: Not a git repository (or any of the parent directories) 1 执行git remote add origin (代码仓库地址)git@git.oschina.net:GShuai/sswuf.git 先要cd 本地文件夹    但是文件夹中没有.git  (执行git init)就有了 2 有了.git在执行">
+<meta property="og:description" content="#如果你有一个自己的git账号 又有一个公司的git账号 你可能会用的这一点 我们可以在~/.ssh目录下新建一个config文件配置一下，就可以解决问题. 下面用的xunwei 你可以替换为任何字符   cd  ~/.ssh    ssh-keygen -t rsa -C “github邮箱”    不要一路回车 第一个回车后是让你填写一个名字 比如我这里用的是 xunwei 所以第一个回车后写">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-25T06:10:05.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1113341-03bd56a124e80b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-25T06:15:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用git遇到的问题">
-<meta name="twitter:description" content="1 Pixhawk—fatal: Not a git repository (or any of the parent directories) 1 执行git remote add origin (代码仓库地址)git@git.oschina.net:GShuai/sswuf.git 先要cd 本地文件夹    但是文件夹中没有.git  (执行git init)就有了 2 有了.git在执行">
+<meta name="twitter:title" content="git管理多个sshkey">
+<meta name="twitter:description" content="#如果你有一个自己的git账号 又有一个公司的git账号 你可能会用的这一点 我们可以在~/.ssh目录下新建一个config文件配置一下，就可以解决问题. 下面用的xunwei 你可以替换为任何字符   cd  ~/.ssh    ssh-keygen -t rsa -C “github邮箱”    不要一路回车 第一个回车后是让你填写一个名字 比如我这里用的是 xunwei 所以第一个回车后写">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1113341-03bd56a124e80b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternate" href="/atom.xml" title="高帅的技术博客" type="application/atom+xml">
   
@@ -69,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-使用git遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git管理多个sshkey" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/25/使用git遇到的问题/" class="article-date">
-  <time datetime="2017-11-25T06:03:53.000Z" itemprop="datePublished">2017-11-25</time>
+    <a href="/2017/11/25/git管理多个sshkey/" class="article-date">
+  <time datetime="2017-11-25T06:14:43.000Z" itemprop="datePublished">2017-11-25</time>
 </a>
     
   </div>
@@ -83,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用git遇到的问题
+      git管理多个sshkey
     </h1>
   
 
@@ -91,19 +93,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>1 Pixhawk—fatal: Not a git repository (or any of the parent directories)</li>
-<li>1 执行git remote add origin (代码仓库地址)git@git.oschina.net:GShuai/sswuf.git 先要cd 本地文件夹    但是文件夹中没有.git  (执行git init)就有了</li>
-<li>2 有了.git在执行git remote add origin  就没问题了</li>
+        <p>#如果你有一个自己的git账号 又有一个公司的git账号 你可能会用的这一点</p>
+<h6 id="我们可以在-ssh目录下新建一个config文件配置一下，就可以解决问题-下面用的xunwei-你可以替换为任何字符"><a href="#我们可以在-ssh目录下新建一个config文件配置一下，就可以解决问题-下面用的xunwei-你可以替换为任何字符" class="headerlink" title="我们可以在~/.ssh目录下新建一个config文件配置一下，就可以解决问题. 下面用的xunwei 你可以替换为任何字符"></a>我们可以在~/.ssh目录下新建一个config文件配置一下，就可以解决问题. 下面用的xunwei 你可以替换为任何字符</h6><p><img src="http://upload-images.jianshu.io/upload_images/1113341-03bd56a124e80b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20171115_1.png"></p>
+<ul>
+<li><ol>
+<li>cd  ~/.ssh</li>
+</ol>
+</li>
+<li><ol>
+<li>ssh-keygen -t rsa -C “github邮箱”</li>
+</ol>
+</li>
+<li><ol>
+<li>不要一路回车 第一个回车后是让你填写一个名字 比如我这里用的是 xunwei 所以第一个回车后写的就是xunwei</li>
+</ol>
+</li>
+<li><ol>
+<li>添加私钥 ssh-add ~/.ssh/xunwei</li>
+</ol>
+</li>
+<li><ol>
+<li>创建config文件</li>
+</ol>
+</li>
+<li>用touch config.txt 创建一个txt文本</li>
+<li>把后缀改为 config</li>
+<li>添加以下内容<blockquote>
+<h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><p>Host github.com<br>HostName github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/xunwei<br>User gaoshuai</p>
+</blockquote>
+</li>
 </ul>
-<hr>
-<p>GitHub时不时被墙，虽说搞代码的FQ是必备技能，但总是不太方便。于是悦老大就选择了用国内的码云(开源中国的Git工具)。GitHub其实是有个桌面版的软件的，自从用上了它基本告别了命令行敲git命令的时代。接下来就来说说GitHub Desktop与开源中国的GIT码云是怎么搭配的吧。</p>
-<p>　　### 如何从码云GIT导入到GitHubDeskTop桌面工具。<br>　　<br>　　　　　　1、先用命令行切换到本地的目录。<br>　　　　　　<br>　　　　　　2、使用git clone 码云GIT地址 命令将项目克隆到本地。<br>　　　　　　　　　　<br>　　　　　　3、在GitHub Desktop上添加(Add)本地项目(local path)。<br>　　　　　　　　　　　　　　<br>　　　　　　4、在GitHub Desktop上尽情地提交、同步吧！<br>　　　　　　　　　　　　　　　　　　<br>　　### 如何将本地的项目上传到码云GIT。<br>　　　　　　　　　　　　　　　　　　　　<br>　　　　　　1、选择本地目录，git init 在GitHub Desktop上添加本地项目。<br>　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　　2、在码云GIT上新建项目。<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　　3、 命令行使用git remote add origin GIT地址 将本地项目与码云GIT项目建立关系。<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　　4、先使用命令git pull origin master 同步代码。<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　　5、使用命令git push origin master 将本地代码推送到远程项目。<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　　6、在GitHub Desktop上尽情地提交、同步吧！<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　　　　　　其实GitHub Desktop本身的功能还是挺简单的，主要用到的功能无非就是查看分支、切换分支、查看提交记录、查看代码diff、提交代码、同步远程代码，这些功能在软件上基本上一看就明白，就不赘述了！<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<br>　　　　　- 查看Git关联的是远程仓库的详细信息<br>　　　　　　　  可以通过命令 git remote show [remote-name] 查看某个远程仓库的详细信息，比如要看所克隆的 origin 仓库，可以运行 git remote show origin</p>
+<p><a href="http://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">参考链接</a><br><a href="http://www.jianshu.com/p/12182e857bea?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">这篇文章蛮不错的</a><br><a href="http://blog.csdn.net/memray/article/details/42082001" target="_blank" rel="noopener">可以看看</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/使用git遇到的问题/" data-id="cjaexyv9h0008mwj089t0kz1b" class="article-share-link">Share</a>
+      <a data-url="https://github.com/longxingtianxiaShuai/longxingtianxiaShuai.github.io.git/2017/11/25/git管理多个sshkey/" data-id="cjaexyv9c0004mwj0jo0xqpqz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -114,19 +139,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/11/25/git管理多个sshkey/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          git管理多个sshkey
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/25/git的简单使用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/11/25/使用git遇到的问题/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git的简单使用</div>
+      <div class="article-nav-title">使用git遇到的问题</div>
     </a>
   
 </nav>
